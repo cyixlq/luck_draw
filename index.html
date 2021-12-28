@@ -121,7 +121,10 @@
     function init() {
         let name = decodeURIComponent(getQueryVariable("name"));
         document.getElementById("title").innerHTML = name;
-        count = parseInt(getQueryVariable("count"));
+        let temp = getQueryVariable("count");
+        if (temp) {
+            count = parseInt(temp);
+        }
     }
     function pickOne() {
         if (clicked) return;
