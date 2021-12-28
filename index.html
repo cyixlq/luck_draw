@@ -92,7 +92,7 @@
 <body>
     <div class="box center container">
         <div class="box vertical">
-            <h1 id="title" class="box center">樱花苑幸运盲盒大抽奖</h1>
+            <h1 id="title" class="box center"></h1>
             <div id="current_num" class="box center">??</div>
             <div class="box button_bar">
                 <input class="button" type="button" value="抽取一次" onclick="pickOne()" />
@@ -119,8 +119,12 @@
         return this.push.apply(this, rest);
     };
     function init() {
-        let name = decodeURIComponent(getQueryVariable("name"));
-        document.getElementById("title").innerHTML = name;
+        let name = getQueryVariable("name");
+        if (name) {
+            document.getElementById("title").innerHTML = decodeURIComponent(name);
+        } else {
+            document.getElementById("title").innerHTML = "樱花苑幸运盲盒大抽奖";
+        }
         let temp = getQueryVariable("count");
         if (temp) {
             count = parseInt(temp);
