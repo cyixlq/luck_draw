@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,7 +89,7 @@
 <body>
     <div class="box center">
         <div class="box vertical">
-            <h1 id="title" class="box center"></h1>
+            <h1 id="title" class="box center">樱花苑幸运盲盒大抽奖</h1>
             <div id="current_num" class="box center">??</div>
             <div class="box button_bar">
                 <input class="button" type="button" value="抽取一次" onclick="pickOne()" />
@@ -120,8 +119,6 @@
         let name = getQueryVariable("name");
         if (name) {
             document.getElementById("title").innerHTML = decodeURIComponent(name);
-        } else {
-            document.getElementById("title").innerHTML = "樱花苑幸运盲盒大抽奖";
         }
         let temp = getQueryVariable("count");
         if (temp) {
@@ -136,11 +133,11 @@
         }
         clicked = true;
         player.play();
-        animation();
+        T = setInterval('animation()', 30);
         setTimeout(showResult, 1600);
     }
     function showResult() {
-        clearTimeout(T);
+        clearInterval(T);
         let index = randomNum(0, pickArray.length - 1);
         let num = pickArray[index];
         currentNum.innerHTML = num;
@@ -175,7 +172,6 @@
     function animation() {
         let random = randomNum(1, count);
         currentNum.innerHTML = random;
-        T = setTimeout('animation()', 30);
     }
     function getQueryVariable(variable) {
         let query = window.location.search.substring(1);
